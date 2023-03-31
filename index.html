@@ -12,13 +12,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet"> 
     <style>
         .visuallyhidden { position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0; }
-        html, body {display: grid;height:100%;font-size: 1.5vmax;text-align: center;padding:0;margin:0;}
+        html, body {display: grid;height:100%;font-size: 1.5rem;text-align: center;padding:0;margin:0;}
         img{max-width: 100%;}
         .hero{position: relative;}
         h1{position: absolute;top:0;color:#FFF;left:0;right:0;text-align: center;font-size:3.25rem;line-height:.75em;}
-        h1, .byline{font-family: 'Bakbak One', cursive;}
+        h1, .byline{font-family: 'Bakbak One', cursive;padding:0 1rem;}
         h1 span{display: block;font-size:2rem;}
         .byline{font-size: 1.5rem;margin-top:0;}
+        footer{font-size:.75rem;}
     </style>
 </head>
 <body>
@@ -30,6 +31,10 @@
         </div>
         <p class="byline">“The Ultimate Fish Out of Water Story”</p>
     </main>
-    <footer>The Galactic Guppy is a poorly drawn comic by <a href="https://joshcrain.io/">Josh Crain</a>.</footer>
+    <footer>
+        <p>The Galactic Guppy is a poorly drawn comic by <a href="https://joshcrain.io/">Josh Crain</a>.<p>
+        <p>Copyright &copy; <span id="year"></span><p>
+        <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+    </footer>
 </body>
 </html>
