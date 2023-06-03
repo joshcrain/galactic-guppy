@@ -13,7 +13,7 @@
     <style>
         *{box-sizing: border-box;}
         .visuallyhidden { position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0; }
-        html, body {font-size: 1.5rem;text-align: center;padding:0;margin:0;}
+        html, body {font-size: 1.5rem;text-align: center;padding:0;margin:0;font-family: 'Bakbak One', cursive;}
         html, body, article, .hgroup {
         block-size: 100%;
         }
@@ -27,14 +27,15 @@
         scroll-snap-align: center;
         
         }
-        article{height:100vh;display: flex;
+        article{height:100vh;display: flex;flex-direction: column;
         align-items: center;
         justify-content: center;margin:0 auto; max-width: 800px;}
         img{max-width: 100%;}
-        .hero{background:url('/images/hero2.png') center;background-size: cover;max-width: 2400px;min-height:698px;margin:0 auto;padding:1rem 0;}
-        h1{letter-spacing:.05em;color:#FFF;text-align: center;font-size:3.25rem;line-height:.75em;margin:0;display: block;}
-        h1, .byline{font-family: 'Bakbak One', cursive;padding:0 1rem;}
+        .hero{background:url('/images/hero2.png') center;background-size: cover;max-width: 2400px;min-height:60vh;margin:0 auto;padding:1rem 0;}
+        h1{letter-spacing:.05em;color:#FFF;text-align: center;font-size: clamp(2.75rem, 8vw, 3.25rem);line-height:.75em;margin:0;display: block;}
+        h1, .byline{padding:0 1rem;}
         h1 span{display: block;font-size:2rem;}
+        h2 {font-size: clamp(.75rem, 8vw, 1.25rem);}
         .byline{font-size: 1.5rem;margin-top:0;}
         footer{font-size:.75rem;}
     </style>
@@ -53,6 +54,7 @@
         {% set items = collections.posts | reverse %}
         {% for post in items %}
         <article>
+            <h2>{{post.data.title}}</h2>
             <img src="{{ post.data.img }}" alt="{{ post.data.title }}" loading="lazy">
         </article>
         {% endfor %}
