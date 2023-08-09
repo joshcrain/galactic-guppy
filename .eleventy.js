@@ -4,6 +4,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("styles.css");
   eleventyConfig.addPassthroughCopy("posts/*/*.jpg");
   eleventyConfig.addPassthroughCopy("testcss/*.css");
+  eleventyConfig.addPassthroughCopy("hero2.png");
 
 
   eleventyConfig.addShortcode("image", async function(src, alt, sizes) {
