@@ -43,11 +43,10 @@
                 <p class="byline">“The Ultimate Fish Out Of Water Story”</p>
             </div>
         </div>
-        <!--<button id="viewToggle">Try it</button>-->
         <div id="items">
-        {% set items = collections.posts | reverse %}
+        {% set items = collections.posts %}
         {% for post in items %}
-        <article id="episode-{{ loop.revindex }}">
+        <article id="episode-{{ loop.index }}">
             <h2 class="visuallyhidden">{{post.data.title}}</h2>
             {% image post.data.img, post.data.title, "(min-width: 30em) 50vw, 100vw" %}
         </article>
@@ -59,36 +58,6 @@
         <p>&copy; 2022 - <span id="year"></span></p>
         <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
     </footer>
-    <script>
- 
-        const viewToggle = document.getElementById('viewToggle');
-        viewToggle.addEventListener('click', () => {
-            console.log('test')
-            const element = document.getElementById("items");
-            if (localStorage.getItem("sort") == 'dsc') {
-                element.classList.add("sort-asc");
-                element.classList.remove("sort-dsc");
-                localStorage.setItem('sort', 'asc');
-                viewToggle.textContent="Ascending";
-            }
-            else {
-                element.classList.add("sort-dsc");
-                element.classList.remove("sort-asc");
-                localStorage.setItem('sort', 'dsc');
-                viewToggle.textContent="Descending";
-            }
-        });
-        const element = document.getElementById("items");
-        if (localStorage.getItem("sort") == 'dsc') {
-                element.classList.add("sort-dsc");
-                viewToggle.textContent="Descending";
-            }
-
-        else {
-            element.classList.add("sort-asc");
-            viewToggle.textContent="Ascending";
-        }
-
-    </script>
+    
 </body>
 </html>
