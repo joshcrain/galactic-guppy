@@ -3,66 +3,92 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE GALACTIC GUPPY</title>
-    <meta name="description" content="The Galactic Guppy—The Ultimate Fish Out Of Water Story.">
+    <title>THE GALACTIC GUPPY, “The Ultimate Fish Out Of Water Story”</title>
+    <meta name="description" content="The Galactic Guppy is a webcomic by Josh Crain">
     <meta name="author" content="Josh Crain">
     <meta name="generator" content="eleventy">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet"> 
-    <style>
+    <style> 
         *{box-sizing: border-box;}
         .visuallyhidden { position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0; }
-        html, body {font-size: 1.5rem;text-align: center;padding:0;margin:0;font-family: 'Bakbak One', cursive;}
+        html, body {font-size: 1.5rem;text-align: center;padding:0;margin:0;font-family: 'Bakbak One', cursive;line-height:1em;}
         html, body, article, .hgroup {
         block-size: 100%;
-        }
-
-        html {
-        scroll-snap-type: y;
-        }
-
-        article,hgroup {
-        scroll-snap-stop: always;
-        scroll-snap-align: center;
-        
-        }
-        article{height:100vh;display: flex;flex-direction: column;
+        }  
+        article, footer {
+        display: flex;flex-direction: column;
         align-items: center;
-        justify-content: center;margin:0 auto; max-width: 800px;}
+        justify-content: center;margin:0 auto; }
         img{max-width: 100%;}
-        .hero{background:url('/images/hero2.png') center;background-size: cover;max-width: 2400px;min-height:60vh;margin:0 auto;padding:1rem 0;}
-        h1{letter-spacing:.05em;color:#FFF;text-align: center;font-size: clamp(2.75rem, 8vw, 3.25rem);line-height:.75em;margin:0;display: block;}
+        .hero{background:url('/img/hero2.png') bottom #000;background-size: cover;max-width: 2400px;height:767px;margin:0 auto;padding:2rem 0;color:#FFF;}
+        h1{letter-spacing:.05em;text-align: center;font-size: clamp(2.5rem, 8vw, 3.25rem);margin:0;display: block;line-height: .75em;}
         h1, .byline{padding:0 1rem;}
         h1 span{display: block;font-size:2rem;}
-        h2 {font-size: clamp(.75rem, 8vw, 1.25rem);}
-        .byline{font-size: 1.5rem;margin-top:0;}
-        footer{font-size:.75rem;}
+        article{max-width: 767px;padding:7rem 0}
+        h2 {font-size: 1.25rem;;}
+        .byline{font-size: clamp(.5rem, 8vw, 1rem);line-height: 1.2em;margin:.75em;;}
+        footer{font-size:.75rem;padding:1rem;line-height: 1em;}
+ 
+        .sort-asc{display: flex; flex-direction: column-reverse;}
     </style>
 </head>
 <body>
     <a href="#main-content" class="visuallyhidden">Skip to main content</a>
     <main id="main-content">
         <div class="hgroup">
-            <div>
-                <div class="hero">
-                    <h1><span>THE</span> GALACTIC GUPPY</h1>
-                </div>
+            <div class="hero">
+                <h1><span>THE</span> GALACTIC GUPPY</h1>
                 <p class="byline">“The Ultimate Fish Out Of Water Story”</p>
             </div>
         </div>
+        <!--<button id="viewToggle">Try it</button>-->
+        <div id="items">
         {% set items = collections.posts | reverse %}
         {% for post in items %}
-        <article>
-            <h2>{{post.data.title}}</h2>
-            <img src="{{ post.data.img }}" alt="{{ post.data.title }}" loading="lazy">
+        <article id="episode-{{ loop.revindex }}">
+            <h2 class="visuallyhidden">{{post.data.title}}</h2>
+            {% image post.data.img, post.data.title, "(min-width: 30em) 50vw, 100vw" %}
         </article>
         {% endfor %}
+        </div>
     </main>
     <footer>
         <p>The Galactic Guppy is a poorly drawn comic by <a href="https://joshcrain.io/">Josh Crain</a>.</p>
-        <p>&copy; <span id="year"></span></p>
+        <p>&copy; 2022 - <span id="year"></span></p>
         <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
     </footer>
+    <script>
+ 
+        const viewToggle = document.getElementById('viewToggle');
+        viewToggle.addEventListener('click', () => {
+            console.log('test')
+            const element = document.getElementById("items");
+            if (localStorage.getItem("sort") == 'dsc') {
+                element.classList.add("sort-asc");
+                element.classList.remove("sort-dsc");
+                localStorage.setItem('sort', 'asc');
+                viewToggle.textContent="Ascending";
+            }
+            else {
+                element.classList.add("sort-dsc");
+                element.classList.remove("sort-asc");
+                localStorage.setItem('sort', 'dsc');
+                viewToggle.textContent="Descending";
+            }
+        });
+        const element = document.getElementById("items");
+        if (localStorage.getItem("sort") == 'dsc') {
+                element.classList.add("sort-dsc");
+                viewToggle.textContent="Descending";
+            }
+
+        else {
+            element.classList.add("sort-asc");
+            viewToggle.textContent="Ascending";
+        }
+
+    </script>
 </body>
 </html>
