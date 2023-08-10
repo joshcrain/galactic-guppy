@@ -6,13 +6,15 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("testcss/*.css");
   eleventyConfig.addPassthroughCopy("hero2.png");
 
+  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
   eleventyConfig.addShortcode("image", async function(src, alt, sizes) {
 		let metadata = await Image(src, {
 			widths: [300, 600],
 			formats: ["avif", "jpeg"],
       urlPath: "/img/",
-      outputDir: "./_site/img/"
+      outputDir: "./_site/img/",
+      useCache: false
 		});
 
 		let imageAttributes = {
