@@ -17,7 +17,9 @@
         html, body, article, .hgroup {
         block-size: 100%;
         }  
-        article, footer {padding:1rem;
+        a{color:#000;}
+        main{max-width: 767px;margin:0 auto;}
+        article, footer {padding:3rem 1rem;
         display: flex;flex-direction: column;
         align-items: center;
         justify-content: center;margin:0 auto; }
@@ -26,12 +28,10 @@
         h1{letter-spacing:.05em;text-align: center;font-size: clamp(2.5rem, 8vw, 3.25rem);margin:0;display: block;line-height: .75em;}
         h1, .byline{padding:0 1rem;}
         h1 span{display: block;font-size:2rem;}
-        article{max-width: 767px;padding:3rem 0}
         h2 {font-size: 1.25rem;;}
         .byline{font-size: clamp(.5rem, 8vw, 1rem);line-height: 1.2em;margin:.75em;;}
         footer{font-size:.75rem;line-height: 1em;}
- 
-        .sort-asc{display: flex; flex-direction: column-reverse;}
+        .info {padding:1em;border-radius: 20px; border: 6px dashed rgb(159, 193, 211); text-align: center;}
     </style>
 </head>
 <body>
@@ -52,11 +52,14 @@
         </article>
         {% endfor %}
         </div>
+        <div class="info">
+            You've reached the end. <br>More are coming!
+        </div>
     </main>
     <footer>
         <p>The Galactic Guppy is a poorly drawn comic by <a href="https://joshcrain.io/">Josh Crain</a>.</p>
-        <p>&copy; 2022 - <span id="year"></span></p>
-        <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+        <p>&copy; 2022 - {% year %}</p>
+  
     </footer>
     
 </body>
