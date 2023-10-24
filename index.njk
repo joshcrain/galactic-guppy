@@ -24,7 +24,16 @@
         align-items: center;
         justify-content: center;margin:0 auto; }
         img{max-width: 100%;height:auto}
-        .hero{background:url('/hero2.png') bottom #000;background-size: cover;max-width: 2400px;height:767px;margin:0 auto;padding:2rem 0;color:#FFF;}
+        .hero{
+            background-image: url(/images/hero.webp), url(/images/hero-back.webp);
+            background-repeat: no-repeat, repeat;
+            background-position:
+                center bottom,
+                right;
+            background-size: 928px 400px, auto;
+            
+            margin:0 auto;padding:2rem 0;color:#FFF;
+        padding-bottom:400px;}
         h1{letter-spacing:.05em;text-align: center;font-size: clamp(2.5rem, 8vw, 3.25rem);margin:0;display: block;line-height: .75em;}
         h1, .byline{padding:0 1rem;}
         h1 span{display: block;font-size:2rem;}

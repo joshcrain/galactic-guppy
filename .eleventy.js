@@ -1,10 +1,7 @@
 const Image = require("@11ty/eleventy-img");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("styles.css");
-  eleventyConfig.addPassthroughCopy("posts/*/*.jpg");
-  eleventyConfig.addPassthroughCopy("testcss/*.css");
-  eleventyConfig.addPassthroughCopy("hero2.png");
+  eleventyConfig.addPassthroughCopy("images");
 
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
