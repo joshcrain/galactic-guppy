@@ -1,3 +1,3 @@
 # The Galactic Guppy
 
-The Galactic Guppy is a poorly drawn comic by [Josh Crain](https://joshcrain.io/). This is the website.
+The Galactic Guppy is a poorly drawn comic by [Josh Crain](https://joshcrain.io/). This is the code of the website.
