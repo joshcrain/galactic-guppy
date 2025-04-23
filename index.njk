@@ -32,12 +32,32 @@
         article, footer {padding:3rem 1rem;max-width: 767px;margin:0 auto;display: flex;flex-direction: column;align-items: center;justify-content: center;margin:0 auto; }
         img{max-width: 100%;height:auto}
         .hero{
-            background-image: url(/images/hero.webp), url(/images/hero-back.webp);
-            background-repeat: no-repeat, repeat;
-            background-position: center bottom, right;
-            background-size: 928px 400px, auto 678px;
-            margin:0 auto;padding:2rem 0;color:#FFF;
-            padding-bottom:400px;}
+            background-image: url(/images/hero-back.webp);
+            background-repeat: repeat;
+            background-position: right;
+            background-size: auto 678px;
+            margin:0 auto;padding-top:2rem ;color:#FFF;
+            position: relative;
+            overflow: hidden;
+            }
+            .hero:after {
+                content: "";
+                display: block;
+                background: white;
+
+                width: 1200px;
+                height: 600px;
+                position: absolute;
+                bottom: -450px;
+                border-radius: 600px / 300px;
+                left: 50%; 
+                transform: translate(-50%, 0);
+                z-index: 0;
+                }
+                .hero img {
+                    position: relative;
+                    z-index: 1;
+                }
         h1{letter-spacing:.05em;text-align: center;font-size: clamp(2.5rem, 8vw, 3.25rem);margin:0;display: block;line-height: .75em;}
         h1, .byline{padding:0 1rem;}
         h1 span{display: block;font-size:2rem;}
@@ -62,6 +82,7 @@
             <div class="hero">
                 <h1><span>THE</span> GALACTIC GUPPY</h1>
                 <p class="byline">“The Ultimate Fish Out Of Water Story”</p>
+                <img src="/images/hero-gg.png" alt="The Galactic Guppy" />
             </div>
         </div>
         <div id="items">
