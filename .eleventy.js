@@ -1,9 +1,9 @@
 const Image = require("@11ty/eleventy-img");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("images");
-
-  eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+  	eleventyConfig.addPassthroughCopy("images");
+	eleventyConfig.addPassthroughCopy("fonts");
+  	eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
   eleventyConfig.addShortcode("image", async function(src, alt, sizes) {
 		let metadata = await Image(src, {
