@@ -28,7 +28,7 @@ module.exports = function (eleventyConfig) {
   // Special shortcode for hero image
   eleventyConfig.addShortcode("heroImage", async function(src, alt) {
     let metadata = await Image(src, {
-      widths: [341, 682, 1023], // Specific widths for the hero image
+      widths: [341], // Specific widths for the hero image
       formats: ["avif", "webp", "jpeg"],
       urlPath: "/img/",
       outputDir: "./_site/img/",
